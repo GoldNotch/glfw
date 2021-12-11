@@ -1,5 +1,5 @@
 # Copyright 2019, NimGL contributors.
-
+# Copyright 2021, Goldnotch changed file
 ## GLFW Bindings
 ## ====
 ## WARNING: This is a generated file. Do not edit
@@ -17,7 +17,7 @@
 ##
 ##  Please assert that you are using the right system for the right procedures.
 
-import ../glfw
+import glfw
 
 when defined(glfwDLL):
   when defined(windows):

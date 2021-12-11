@@ -1,5 +1,5 @@
 # Copyright 2019, NimGL contributors.
-
+# Copyright 2021, Goldnotch changed file
 ## GLFW Bindings
 ## ====
 ## WARNING: This is a generated file. Do not edit
@@ -11,8 +11,6 @@
 ##
 ## You can check the original documentation `here <http://www.glfw.org/docs/latest/>`_.
 
-import ./glfw/private/logo
-
 when defined(glfwDLL):
   when defined(windows):
     const glfw_dll* = "glfw3.dll"
@@ -22,7 +20,7 @@ when defined(glfwDLL):
     const glfw_dll* = "libglfw.so.3"
 else:
   when not defined(emscripten):
-    {.compile: "glfw/private/glfw/src/vulkan.c".}
+    {.compile: "glfwlib/src/vulkan.c".}
 
   # Thanks to ephja for making this build system
   when defined(emscripten):
@@ -33,60 +31,60 @@ else:
     else:
       {.passL: "-lopengl32 -lgdi32" .}
     {.passC: "-D_GLFW_WIN32",
-      compile: "glfw/private/glfw/src/win32_init.c",
-      compile: "glfw/private/glfw/src/win32_joystick.c",
-      compile: "glfw/private/glfw/src/win32_monitor.c",
-      compile: "glfw/private/glfw/src/win32_time.c",
-      compile: "glfw/private/glfw/src/win32_thread.c",
-      compile: "glfw/private/glfw/src/win32_window.c",
-      compile: "glfw/private/glfw/src/wgl_context.c",
-      compile: "glfw/private/glfw/src/egl_context.c",
-      compile: "glfw/private/glfw/src/osmesa_context.c".}
+      compile: "glfwlib/src/win32_init.c",
+      compile: "glfwlib/src/win32_joystick.c",
+      compile: "glfwlib/src/win32_monitor.c",
+      compile: "glfwlib/src/win32_time.c",
+      compile: "glfwlib/src/win32_thread.c",
+      compile: "glfwlib/src/win32_window.c",
+      compile: "glfwlib/src/wgl_context.c",
+      compile: "glfwlib/src/egl_context.c",
+      compile: "glfwlib/src/osmesa_context.c".}
   elif defined(macosx):
     {.passC: "-D_GLFW_COCOA -D_GLFW_USE_CHDIR -D_GLFW_USE_MENUBAR -D_GLFW_USE_RETINA",
       passL: "-framework Cocoa -framework OpenGL -framework IOKit -framework CoreVideo",
-      compile: "glfw/private/glfw/src/cocoa_init.m",
-      compile: "glfw/private/glfw/src/cocoa_joystick.m",
-      compile: "glfw/private/glfw/src/cocoa_monitor.m",
-      compile: "glfw/private/glfw/src/cocoa_window.m",
-      compile: "glfw/private/glfw/src/cocoa_time.c",
-      compile: "glfw/private/glfw/src/posix_thread.c",
-      compile: "glfw/private/glfw/src/nsgl_context.m",
-      compile: "glfw/private/glfw/src/egl_context.c",
-      compile: "glfw/private/glfw/src/osmesa_context.c".}
+      compile: "glfwlib/src/cocoa_init.m",
+      compile: "glfwlib/src/cocoa_joystick.m",
+      compile: "glfwlib/src/cocoa_monitor.m",
+      compile: "glfwlib/src/cocoa_window.m",
+      compile: "glfwlib/src/cocoa_time.c",
+      compile: "glfwlib/src/posix_thread.c",
+      compile: "glfwlib/src/nsgl_context.m",
+      compile: "glfwlib/src/egl_context.c",
+      compile: "glfwlib/src/osmesa_context.c".}
   else:
     {.passL: "-pthread -lGL -lX11 -lXrandr -lXxf86vm -lXi -lXcursor -lm -lXinerama".}
 
     when defined(mir):
       {.passC: "-D_GLFW_MIR",
-        compile: "glfw/private/glfw/src/mir_init.c",
-        compile: "glfw/private/glfw/src/mir_monitor.c",
-        compile: "glfw/private/glfw/src/mir_window.c".}
+        compile: "glfwlib/src/mir_init.c",
+        compile: "glfwlib/src/mir_monitor.c",
+        compile: "glfwlib/src/mir_window.c".}
     elif defined(wayland):
       {.passC: "-D_GLFW_WAYLAND",
-        compile: "glfw/private/glfw/src/wl_init.c",
-        compile: "glfw/private/glfw/src/wl_monitor.c",
-        compile: "glfw/private/glfw/src/wl_window.c".}
+        compile: "glfwlib/src/wl_init.c",
+        compile: "glfwlib/src/wl_monitor.c",
+        compile: "glfwlib/src/wl_window.c".}
     else:
       {.passC: "-D_GLFW_X11",
-        compile: "glfw/private/glfw/src/x11_init.c",
-        compile: "glfw/private/glfw/src/x11_monitor.c",
-        compile: "glfw/private/glfw/src/x11_window.c",
-        compile: "glfw/private/glfw/src/glx_context.c".}
+        compile: "glfwlib/src/x11_init.c",
+        compile: "glfwlib/src/x11_monitor.c",
+        compile: "glfwlib/src/x11_window.c",
+        compile: "glfwlib/src/glx_context.c".}
 
-    {.compile: "glfw/private/glfw/src/xkb_unicode.c",
-      compile: "glfw/private/glfw/src/linux_joystick.c",
-      compile: "glfw/private/glfw/src/posix_time.c",
-      compile: "glfw/private/glfw/src/egl_context.c",
-      compile: "glfw/private/glfw/src/osmesa_context.c",
-      compile: "glfw/private/glfw/src/posix_thread.c".}
+    {.compile: "glfwlib/src/xkb_unicode.c",
+      compile: "glfwlib/src/linux_joystick.c",
+      compile: "glfwlib/src/posix_time.c",
+      compile: "glfwlib/src/egl_context.c",
+      compile: "glfwlib/src/osmesa_context.c",
+      compile: "glfwlib/src/posix_thread.c".}
 
   when not defined(emscripten):
-    {.compile: "glfw/private/glfw/src/context.c",
-      compile: "glfw/private/glfw/src/init.c",
-      compile: "glfw/private/glfw/src/input.c",
-      compile: "glfw/private/glfw/src/monitor.c",
-      compile: "glfw/private/glfw/src/window.c".}
+    {.compile: "glfwlib/src/context.c",
+      compile: "glfwlib/src/init.c",
+      compile: "glfwlib/src/input.c",
+      compile: "glfwlib/src/monitor.c",
+      compile: "glfwlib/src/window.c".}
 
 when defined(vulkan):
   when not defined(nonimgl):
@@ -1052,7 +1050,7 @@ type
     ## This describes a single 2D image.
     width*: int32
     height*: int32
-    pixels*: ptr cuchar
+    pixels*: ptr uint8
   GLFWGamepadState* = object
     ## This describes the input state of a gamepad.
     buttons*: array[15, bool]
@@ -2244,7 +2242,7 @@ proc glfwWindowHintString*(hint: int32, value: cstring): void {.importc: "glfwWi
   ## @since Added in version 3.3.
   ##
   ## @ingroup window
-proc glfwCreateWindowC*(width: int32, height: int32, title: cstring, monitor: GLFWMonitor, share: GLFWWindow): GLFWWindow {.importc: "glfwCreateWindow".}
+proc glfwCreateWindow*(width: int32, height: int32, title: cstring, monitor: GLFWMonitor, share: GLFWWindow): GLFWWindow {.importc: "glfwCreateWindow".}
   ## @brief Creates a window and its associated context.
   ##
   ## This function creates a window and its associated OpenGL or OpenGL ES
@@ -4488,7 +4486,7 @@ proc glfwGetJoystickAxes*(jid: int32, count: ptr int32): ptr float32 {.importc: 
   ## @since Added in version 3.0.  Replaces `glfwGetJoystickPos`.
   ##
   ## @ingroup input
-proc glfwGetJoystickButtons*(jid: int32, count: ptr int32): ptr cuchar {.importc: "glfwGetJoystickButtons".}
+proc glfwGetJoystickButtons*(jid: int32, count: ptr int32): ptr uint8 {.importc: "glfwGetJoystickButtons".}
   ## @brief Returns the state of all buttons of the specified joystick.
   ##
   ## This function returns the state of all buttons of the specified joystick.
@@ -4527,7 +4525,7 @@ proc glfwGetJoystickButtons*(jid: int32, count: ptr int32): ptr cuchar {.importc
   ## @glfw3 Changed to return a dynamic array.
   ##
   ## @ingroup input
-proc glfwGetJoystickHats*(jid: int32, count: ptr int32): ptr cuchar {.importc: "glfwGetJoystickHats".}
+proc glfwGetJoystickHats*(jid: int32, count: ptr int32): ptr uint8 {.importc: "glfwGetJoystickHats".}
   ## @brief Returns the state of all hats of the specified joystick.
   ##
   ## This function returns the state of all hats of the specified joystick.
@@ -5422,11 +5420,3 @@ when defined(vulkan):
   
 
 {.pop.}
-
-proc glfwCreateWindow*(width: int32, height: int32, title: cstring = "NimGL", monitor: GLFWMonitor = nil, share: GLFWWindow = nil, icon: bool = true): GLFWWindow =
-  ## Creates a window and its associated OpenGL or OpenGL ES
-  ## Utility to create the window with a proper icon.
-  result = glfwCreateWindowC(width, height, title, monitor, share)
-  if not icon: return result
-  var image = GLFWImage(pixels: cast[ptr cuchar](nimglLogo[0].addr), width: nimglLogoWidth, height: nimglLogoHeight)
-  result.setWindowIcon(1, image.addr)
