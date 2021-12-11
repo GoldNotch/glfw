@@ -1,7 +1,7 @@
 # Copyright 2019, NimGL contributors.
 
 import unittest
-import glfw, glfw/native
+import glfw, glfw_os
 
 proc keyProc(window: GLFWWindow, key: int32, scancode: int32, action: int32, mods: int32): void {.cdecl.} =
   if key == GLFWKey.Escape and action == GLFWPress:
@@ -14,7 +14,7 @@ suite "GLFW":
     check glfwInit()
 
   test "window create":
-    window = glfwCreateWindow(800, 600, "NimGL")
+    window = glfwCreateWindow(800, 600, "NimGL", nil, nil)
     check window != nil
 
     discard window.setKeyCallback(keyProc)

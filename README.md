@@ -71,7 +71,7 @@ proc keyProc(window: GLFWWindow, key: int32, scancode: int32, action: int32, mod
 proc main() =
   assert glfwInit()
 
-  let w: GLFWWindow = glfwCreateWindow(800, 600)
+  let w: GLFWWindow = glfwCreateWindow(800, 600, "Title", nil, nil)
   if w == nil:
     quit(-1)
 
