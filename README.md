@@ -4,7 +4,8 @@
 I liked the GLFW binding from NimGL, but I didn't like some deviation from original C API, so I removed all these deviations.
 What deviations?
 For example set logo by default when window created. Also this logo is private and written in file byte by byte.
-Thought, OOP-style for GLFWwindow and other objects is good and I didn't changed that.
+
+Although, OOP-style for GLFWwindow and other objects is good and I didn't changed that.
 
 ## Installation
 Just clone and import glfw.nim in your code
