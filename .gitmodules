@@ -1,3 +1,3 @@
-[submodule "src/glfw/private/glfw"]
-	path = src/glfw/private/glfw
+[submodule "src/glfwlib"]
+	path = src/glfwlib
 	url = https://github.com/glfw/glfw.git
