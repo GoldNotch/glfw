@@ -1,7 +1,7 @@
 # Copyright 2019, NimGL contributors.
 
 import unittest
-import glfw, glfw_os
+import glfw, glfw_native
 
 proc keyProc(window: GLFWWindow, key: int32, scancode: int32, action: int32, mods: int32): void {.cdecl.} =
   if key == GLFWKey.Escape and action == GLFWPress:
